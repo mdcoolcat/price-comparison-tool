@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Price Comparison Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Product Price Comparison</h1>
+            <p>Find the best prices across multiple retailers</p>
+        </header>
+
+        <main>
+            <div class="search-section">
+                <form id="search-form">
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            id="product-input"
+                            placeholder="Enter product URL or name..."
+                            required
+                            autocomplete="off"
+                        >
+                        <button type="submit" id="search-button">
+                            <span>Compare Prices</span>
+                        </button>
+                    </div>
+
+                    <div class="mode-selector">
+                        <label for="search-mode">Search Mode:</label>
+                        <select id="search-mode">
+                            <option value="all" selected>All Sources (Recommended)</option>
+                            <option value="google">Google Shopping</option>
+                            <option value="mcp">Brave + Tavily</option>
+                            <option value="brave">Brave Only</option>
+                            <option value="tavily">Tavily Only</option>
+                        </select>
+                    </div>
+
+                    <p class="help-text">
+                        Example: "Gaming Laptop" or "https://amazon.com/product-url"
+                    </p>
+                </form>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Searching for best prices...</p>
+            </div>
+
+            <div id="error" class="error hidden">
+                <p id="error-message"></p>
+            </div>
+
+            <div id="results-section" class="results-section hidden">
+                <div class="results-header">
+                    <h2>Results for: <span id="product-name"></span></h2>
+                    <p class="result-count"><span id="result-count"></span> results found</p>
+                </div>
+
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Retailer</th>
+                            <th>Price</th>
+                            <th>Discount</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-body">
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Google Shopping, Brave Search & Tavily</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
